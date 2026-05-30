@@ -8,9 +8,8 @@ const bot = new TelegramBot(process.env.TELEGRAM_TOKEN, { polling: true });
 bot.onText(/\/start/, (option) => {
   bot.sendMessage(
     option.chat.id,
-    `Hello ${option.from.first_name}, I am a bot. I am here to help you with your queries. Please type /joke to get a funny joke!`,
+    `Hello ${option.from.first_name}, I am a S Joke bot. I am here to help you with your queries. Please type /joke to get a funny joke!`,
   );
-  console.log(option);
 });
 
 bot.onText(/\/joke/, async (option) => {
@@ -18,7 +17,6 @@ bot.onText(/\/joke/, async (option) => {
     const response = await axios.get(
       "https://official-joke-api.appspot.com/random_joke",
     );
-    console.log(response);
     const setup = response.data.setup;
     const punchline = response.data.punchline;
     bot.sendMessage(option.chat.id, `${setup}\n\n😂 ${punchline}`);
