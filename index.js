@@ -1,3 +1,5 @@
+const express = require('express');
+const app = express();
 const TelegramBot = require("node-telegram-bot-api");
 const dotenv = require("dotenv");
 dotenv.config();
@@ -61,3 +63,6 @@ bot.onText(/hindijoke/i, async (option) => {
     );
   }
 });
+
+app.get('/', (req, res) => res.send('Bot is Running!'));
+app.listen(process.env.PORT || 3000);
